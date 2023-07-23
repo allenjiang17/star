@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+      body{
+        font-family:Georgia, 'Times New Roman', Times, serif;
+      }
+      #display_box{
+
+      position: fixed;
+      padding: 1rem;
+      top:5%;
+      left:5%;
+      background-color: white;
+      width:fit-content;
+    }
+    </style>
+    <title>Stars</title>
+  </head>
+  <body>
+    <div id="display_box">
+      <div style="margin-bottom:1rem; display: flex; align-items:center">
+        Star: <p id="star_name"></p>
+      </div>
+      <div style="margin-bottom:1rem; display: flex; align-items:center">
+        <p style = "margin-right:0.5rem">Date:</p>
+        <input type="datetime-local" id="date" style="height: 2em">
+      </div>
+      <div style="margin-bottom:1rem; display: flex; align-items:center">
+        <p style = "margin-right:0.5em">Latitude:</p>
+        <p id="lat_display"></p>
+        <input type="range" id="lat" min="-90" max="90" value="45"/>
+      </div>
+      <div style="margin-bottom:1rem; display: flex; align-items:center">
+        <p style = "margin-right:0.5rem">Longitude:</p>
+        <p id="long_display"></p>
+        <input type="range" id="long" min="-180" max="180" value="0"/>
+      </div>
+    </div>   
+    <div id="app"></div> 
+    <script type="module" src="main.js"></script>
+    <!--<script type="module" src="/src/main.js"></script>-->
+  </body>
+</html>
