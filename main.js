@@ -195,13 +195,13 @@ sphere.name = "Earth";
 scene.add( sphere );
 
 //sun
-const sun_light = new THREE.PointLight( 0xffffff, 2, 0);
+const sun_light = new THREE.DirectionalLight( 0xffffff, 2, 0);
 const sun_geo = new THREE.SphereGeometry(sun_radius, 64,64);
 const sun_sphere = new THREE.Mesh(sun_geo);
 sun_sphere.name = "Sun";
 
 let sun_coords = calculateSunPosition();
-sun_light.position.set(sun_coords[0]*dist, sun_coords[1]*dist, sun_coords[2]*dist);
+sun_light.position.set(sun_coords[0]*dist*1000, sun_coords[1]*dist*1000, sun_coords[2]*dist*1000);
 sun_sphere.position.set(sun_coords[0]*dist, sun_coords[1]*dist, sun_coords[2]*dist);
 sun_coords[1]*dist;
 
@@ -334,7 +334,7 @@ async function getDate(event) {
         let new_planet_coords = raDecToCartesian(planet_data[i][0], planet_data[i][1]);
 
         if (planet_spheres[i].name === "Moon") {
-            planet_spheres[i].position.set(new_planet_coords[0]*(dist/10), new_planet_coords[1]*(dist/10), new_planet_coords[2]*(dist/10));
+            planet_spheres[i].position.set(new_planet_coords[0]*(dist), new_planet_coords[1]*(dist), new_planet_coords[2]*(dist));
 
         } else {
             planet_spheres[i].geometry.dispose();
@@ -565,10 +565,10 @@ async function init_planets() {
             let planet_obj;
 
             if (planet.name === "Moon") {
-                planet_mag = sun_radius/10;
+                planet_mag = sun_radius;
                 planet_geo = new THREE.SphereGeometry(planet_mag, 16,16);
                 planet_obj = new THREE.Mesh(planet_geo, new THREE.MeshLambertMaterial({color: planet.color}));
-                planet_obj.position.set(planet_coords[0]*(dist/10), planet_coords[1]*(dist/10), planet_coords[2]*(dist/10));
+                planet_obj.position.set(planet_coords[0]*(dist), planet_coords[1]*(dist), planet_coords[2]*(dist));
                 planet_obj.name = "Moon";
 
                 //const moonlight = new THREE.PointLight( 0xff0000, 1, 0);
